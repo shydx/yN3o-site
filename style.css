@@ -1,111 +1,199 @@
-html{
-  overflow-y: scroll;
-}
+/* === GLOBAL === */
+
 body {
     margin: 0;
-    padding: 0;
-    background: rgba(15, 15, 15, 1);
+    background: #0d0d0d;
+    font-family: "Inter", sans-serif;
+    color: white;
+    text-align: center;
+}
+
+.container {
+    padding-top: 8vh;
+}
+
+/* === LOGO === */
+
+.logo {
+    width: 6vw;
+    min-width: 55px;
+    margin: 0 auto 2vh;
+}
+
+/* === BADGE === */
+
+.badge {
+    font-size: 1.3vw;
+    opacity: 0.85;
+}
+
+.badge span {
+    color: #00ff7b;
+    font-weight: 600;
+}
+
+/* === TITRE === */
+
+h1 {
+    font-size: 8vw;
+    font-weight: 800;
+    margin: 2vh 0 1vh;
+}
+
+/* === SOUS-TEXTE === */
+
+.subtitle {
+    width: 30vw;
+    min-width: 280px;
+    margin: 0 auto;
+    opacity: 0.75;
+    font-size: 0.9vw;
+    line-height: 1.5em;
+    font-style: normal;
+}
+
+/* === CARTES === */
+
+.cards {
+    margin-top: 5vh;
     position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-family: Arial, Helvetica, sans-serif;
+    height: 5vh;
 }
 
-#titre {
-  color: white;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  font-size: 50px;
-  text-align: center;
-  transition: all 0.5s;
-  padding-top: 80px;
+/* CARTES — version élargie */
+.card {
+    width: 50vw;
+    height: 45vw;
+    max-width: 50vh;
+    max-height: 455vh;
+    border-radius: 3vw;
+
+    position: absolute;
+    top: 50%;
+    transform-origin: center bottom;
+
+    box-shadow: 0 1vw 3vw rgba(0,0,0,0.3);
+    opacity: 1;
 }
 
-#titre.active {
-  color: rgb(29, 211, 29);
-  font-size: 80px;
+/* === POSITIONNEMENT PROPORTIONNEL === */
+
+.c1 {
+    background: #8256ff;
+    left: 8%;
+    transform: translateY(15vh) rotate(-12deg);
+    z-index: 1;
 }
 
-#btn {
-  padding: 15px 30px;     /* espace intérieur (hauteur x largeur) */
-  font-size: 24px;        /* taille du texte */
-  cursor: pointer;
-  border: none;
-  border-radius: 8px;     /* coins arrondis */
-  background-color: #4CAF50; /* couleur verte */
-  color: white;
-  transition: all 0.3s;
-
+.c2 {
+    background: #ff6b76;
+    left: 26%;
+    transform: translateY(7vh) rotate(-6deg);
+    z-index: 2;
 }
 
-#btn:hover {
-  background-color: #45a049; /* effet au survol */
-  font-size: 30px;
-  transition: all 0.3s;
+.c3 {
+    background: #4bd5ff;
+    left: 50%;
+    transform: translate(-50%, 0);
+    z-index: 5;
 }
 
-#btn:disabled {
-  background-color: grey;
-  cursor: not-allowed;
-  font-size: 24px;
+.c4 {
+    background: #3af1c7;
+    right: 26%;
+    transform: translateY(7vh) rotate(6deg);
+    z-index: 2;
 }
 
-#explosion-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  pointer-events: none; /* laisse passer les clics */
+.c5 {
+    background: #4d63ff;
+    right: 8%;
+    transform: translateY(15vh) rotate(12deg);
+    z-index: 1;
 }
 
-#explosion-container.particle {
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  background-color: orange;
-  border-radius: 50%;
-  opacity: 1;
-  transition: transform 0.6s ease, opacity 0.6s ease;
+/* === LIMITATION === */
+
+.limitation {
+    background: #080808;
+    margin-top: 49vh;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    padding: 40vh 2vw;
+    font-size: 1.1vw;
+    position: relative;
+    z-index: 10;
+    border-radius: -50px;
+    box-shadow: 10;
 }
 
-.navbar {
-  position: fixed;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  
-  /* Fond semi-transparent + flou derrière */
-  background: rgba(0, 0, 0, 0.5);
-  -webkit-backdrop-filter: blur(10px); /* Safari */
-  backdrop-filter: blur(10px);
-  
-  padding: 10px 30px;
-  border-radius: 102px;
-  border: 0.5px solid white;
-  
-  z-index: 1000;
+.limitation p {
+    margin: 0;
+    opacity: 0.9;
 }
 
+/* === RESPONSIVE === */
 
-.navbar ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  gap: 30px;
+@media (max-width: 800px) {
+    h1 { font-size: 16vw; }
+    .subtitle { width: 70vw; font-size: 3.5vw; }
+
+    .card {
+        width: 40vw;
+        height: 60vw;
+        border-radius: 7vw;
+        transition: transform 0.3s ease;
+    }
+    
+    .card:hover {
+        transform: translateY(-2vh);
+    }
+    
+    /* Positionnement proportionnel pour mobile */
+    .c1 {
+        left: 4%;
+        transform: translateY(18vh) rotate(-12deg);
+    }
+    
+    .c1:hover {
+        transform: translateY(16vh) rotate(-12deg);
+    }
+
+    .c2 {
+        left: 20%;
+        transform: translateY(9vh) rotate(-6deg);
+    }
+    
+    .c2:hover {
+        transform: translateY(7vh) rotate(-6deg);
+    }
+
+    .c3 {
+        left: 50%;
+        transform: translate(-50%, 0);
+    }
+    
+    .c3:hover {
+        transform: translate(-50%, -2vh);
+    }
+
+    .c4 {
+        right: 20%;
+        transform: translateY(9vh) rotate(6deg);
+    }
+    
+    .c4:hover {
+        transform: translateY(7vh) rotate(6deg);
+    }
+
+    .c5 {
+        right: 4%;
+        transform: translateY(18vh) rotate(12deg);
+    }
+    
+    .c5:hover {
+        transform: translateY(16vh) rotate(12deg);
+    }
 }
 
-.navbar a {
-  color: white;
-  font-size: 24px;
-  text-decoration: none;
-  font-weight: default;
-  display: inline-block;
-  transition: transform 0.2s ease, color 0.2s ease;
-}
-
-.navbar a:hover {
-  transform: scale(1);
-  transition: transform 0.3s;
-  text-decoration: underline;
-}
